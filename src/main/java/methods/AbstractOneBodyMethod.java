@@ -2,7 +2,6 @@ package methods;
 
 public abstract class AbstractOneBodyMethod implements Method {
 
-
     double x;
     double y;
     double vx;

@@ -6,11 +6,13 @@ import methods.Method;
 import methods.RK4;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
+
 //        List<Float> stepValues = Arrays.asList(
 //                0.5f, 0.2f, 0.1f, 0.05f, 0.01f, 0.005f, 0.001f, 0.0005f, 0.0001f);
 //        for(Float tau : stepValues) {

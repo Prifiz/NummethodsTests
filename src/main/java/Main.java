@@ -5,6 +5,7 @@ import methods.Euler;
 import methods.Method;
 import methods.RK4;
 
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -28,6 +29,7 @@ public class Main {
 //        Method method = new Euler();
 //        MethodRunner runner = new MethodRunnerImpl(method);
 //        runner.run(1000, 0.001f);// use decorator for options
+
     }
 
     private static void calculateErrors(final float TAU) {

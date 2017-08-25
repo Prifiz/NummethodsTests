@@ -1,9 +1,10 @@
 package random;
 
-import methods.AbstractNBodyConfiguration;
-import methods.AbstractRectDistributionGenerator;
+import initials.AbstractNBodyConfiguration;
+import initials.AbstractRectDistributionGenerator;
 import initials.InitialStateGenerator;
 import initials.NBodyConfiguration2D;
+
 
 public class RandomRectInitialStateGenerator extends AbstractRectDistributionGenerator implements InitialStateGenerator {
 
@@ -15,7 +16,10 @@ public class RandomRectInitialStateGenerator extends AbstractRectDistributionGen
         AbstractNBodyConfiguration configuration = new NBodyConfiguration2D(partsCount);
         RandomGenerator randomGenerator = UniformRandomGenerator.getInstance();
         for (int i = 0; i < partsCount; i++) {
-            configuration.
+            // TODO
+            //configuration.
         }
+
+        return configuration;
     }
 }

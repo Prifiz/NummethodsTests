@@ -1,6 +1,5 @@
 package initials;
 
-import methods.AbstractNBodyConfiguration;
 import utils.CollectionUtils;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package methods;
+package initials;
 
 public abstract class AbstractNBodyConfiguration {
 

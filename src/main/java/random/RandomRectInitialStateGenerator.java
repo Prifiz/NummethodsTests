@@ -1,4 +1,9 @@
-package methods;
+package random;
+
+import methods.AbstractNBodyConfiguration;
+import methods.AbstractRectDistributionGenerator;
+import initials.InitialStateGenerator;
+import initials.NBodyConfiguration2D;
 
 public class RandomRectInitialStateGenerator extends AbstractRectDistributionGenerator implements InitialStateGenerator {
 

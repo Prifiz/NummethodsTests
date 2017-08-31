@@ -1,10 +1,10 @@
 package initials;
 
 public class AbstractRectDistributionGenerator {
-    private double left;
-    private double right;
-    private double top;
-    private double bottom;
+    protected double left;
+    protected double right;
+    protected double top;
+    protected double bottom;
 
     public AbstractRectDistributionGenerator(double left, double right, double top, double bottom) {
         this.left = left;

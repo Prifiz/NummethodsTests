@@ -1,14 +1,11 @@
 import errors.Error;
 import errors.RichardsonError;
 import errors.RungeError;
-import methods.Euler;
+import initials.InitialStateGenerator;
+import initials.NBodyConfiguration;
 import methods.Method;
 import methods.RK4;
-
-
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import random.RandomRectInitialStateGenerator;
 
 public class Main {
 
@@ -30,6 +27,8 @@ public class Main {
 //        MethodRunner runner = new MethodRunnerImpl(method);
 //        runner.run(1000, 0.001f);// use decorator for options
 
+        InitialStateGenerator initialStateGenerator = new RandomRectInitialStateGenerator();
+        NBodyConfiguration configuration = initialStateGenerator.generateCoordinates(10);
     }
 
     private static void calculateErrors(final float TAU) {

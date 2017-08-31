@@ -1,6 +1,6 @@
 package initials;
 
-public abstract class AbstractNBodyConfiguration {
+public abstract class AbstractNBodyConfiguration implements NBodyConfiguration {
 
     protected int N;
 

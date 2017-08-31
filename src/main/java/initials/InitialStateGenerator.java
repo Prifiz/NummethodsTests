@@ -1,5 +1,7 @@
 package initials;
 
 public interface InitialStateGenerator {
-    AbstractNBodyConfiguration generate(int partsCount);
+    NBodyConfiguration generateCoordinates(int partsCount);
+    NBodyConfiguration generateVelocities(int partsCount);
+    NBodyConfiguration generateMasses(int partsCount);
 }

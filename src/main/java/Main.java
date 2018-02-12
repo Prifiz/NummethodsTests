@@ -1,10 +1,6 @@
-import errors.Error;
-import errors.RichardsonError;
-import errors.RungeError;
+import boundaries.*;
 import initials.InitialStateGenerator;
 import initials.NBodyConfiguration;
-import methods.Method;
-import methods.RK4;
 import random.RandomRectInitialStateGenerator;
 
 public class Main {
@@ -26,21 +22,51 @@ public class Main {
 //        Method method = new Euler();
 //        MethodRunner runner = new MethodRunnerImpl(method);
 //        runner.run(1000, 0.001f);// use decorator for options
+//
+//        InitialStateGenerator initialStateGenerator = new RandomRectInitialStateGenerator();
+//        NBodyConfiguration configuration = initialStateGenerator.generateCoordinates(10);
 
-        InitialStateGenerator initialStateGenerator = new RandomRectInitialStateGenerator();
-        NBodyConfiguration configuration = initialStateGenerator.generateCoordinates(10);
+        calculateErrors(0.1f);
     }
 
     private static void calculateErrors(final float TAU) {
-        System.out.println("TAU = " + TAU);
-        final int STEPS = 10000;
-        Method rk4 = new RK4();
-        Error rungeError = new RungeError(rk4, TAU);
-        double rungeErrorValue = rungeError.calculateAverageError(STEPS);
-        System.out.println("RUNGE ERROR: " + rungeErrorValue + " %");
-        Error richardsonError = new RichardsonError(rk4, TAU);
-        double richardsonErrorValue = richardsonError.calculateAverageError(STEPS);
-        System.out.println("RICHARDSON ERROR: " + richardsonErrorValue + " %");
-        System.out.println("=============================");
+
+        int tabNumber = 1;
+        double left = -1.0f;
+        double bottom = -1.0f;
+        double width = 2.0;
+        double hieght = 2.0;
+
+
+        // UI Adapter: START
+
+        AbstractBoundariesParams abstractBoundariesParams = null;
+
+        switch (tabNumber) {
+            case 1:
+                abstractBoundariesParams = new RectangleBoundariesParams(left, bottom, width, hieght);
+        }
+
+
+
+
+        // UI Adapter: END
+
+        Boundaries boundaries = new DefaultBoundariesGenerator().createBoundaries(abstractBoundariesParams);
+
+
+
+        System.out.println(boundaries.getName());
+
+//        System.out.println("TAU = " + TAU);
+//        final int STEPS = 10000;
+//        Method rk4 = new RK4();
+//        Error rungeError = new RungeError(rk4, TAU);
+//        double rungeErrorValue = rungeError.calculateAverageError(STEPS);
+//        System.out.println("RUNGE ERROR: " + rungeErrorValue + " %");
+//        Error richardsonError = new RichardsonError(rk4, TAU);
+//        double richardsonErrorValue = richardsonError.calculateAverageError(STEPS);
+//        System.out.println("RICHARDSON ERROR: " + richardsonErrorValue + " %");
+//        System.out.println("=============================");
     }
 }

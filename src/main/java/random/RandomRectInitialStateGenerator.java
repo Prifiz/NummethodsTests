@@ -28,9 +28,10 @@ public class RandomRectInitialStateGenerator extends AbstractRectDistributionGen
     }
 
     public NBodyConfiguration generateVelocities(int partsCount) {
-        for (int i = 0; i < partsCount; i++) {
-            double vx_cur = new RandomUniformIntervalGenerator()
-        }
+//        for (int i = 0; i < partsCount; i++) {
+//            double vx_cur = new RandomUniformIntervalGenerator()
+//        }
+        return null;
     }
 
     public NBodyConfiguration generateMasses(int partsCount) {

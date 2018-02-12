@@ -1,6 +1,9 @@
 import boundaries.*;
+import coordinates.Coordinates2D;
 import initials.InitialStateGenerator;
 import initials.NBodyConfiguration;
+import random.PositionGenerator;
+import random.RandomRectBoundariesPositionGenerator;
 import random.RandomRectInitialStateGenerator;
 
 public class Main {
@@ -36,6 +39,7 @@ public class Main {
         double bottom = -1.0f;
         double width = 2.0;
         double hieght = 2.0;
+        final int N = 1000;
 
 
         // UI Adapter: START
@@ -53,7 +57,11 @@ public class Main {
         // UI Adapter: END
 
         Boundaries boundaries = new DefaultBoundariesGenerator().createBoundaries(abstractBoundariesParams);
+        PositionGenerator positionGenerator = new RandomRectBoundariesPositionGenerator(boundaries);
+        for(int i = 0; i < N; i++) {
 
+        }
+        Coordinates2D coordinates2D = positionGenerator.generatePoint();
 
 
         System.out.println(boundaries.getName());

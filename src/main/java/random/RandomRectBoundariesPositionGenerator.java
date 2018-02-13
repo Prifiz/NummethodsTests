@@ -1,13 +1,12 @@
 package random;
 
-import boundaries.Boundaries;
 import boundaries.RectangleBoundaries;
 import coordinates.Coordinates2D;
 
 /**
  * Created by PrifizGamer on 12.02.2018.
  */
-public class RandomRectBoundariesPositionGenerator implements PositionGenerator {
+public class RandomRectBoundariesPositionGenerator  {
 
     private RectangleBoundaries boundaries;
 

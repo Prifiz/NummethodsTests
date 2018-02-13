@@ -1,10 +1,5 @@
 import boundaries.*;
-import coordinates.Coordinates2D;
-import initials.InitialStateGenerator;
-import initials.NBodyConfiguration;
-import random.PositionGenerator;
-import random.RandomRectBoundariesPositionGenerator;
-import random.RandomRectInitialStateGenerator;
+import random.*;
 
 public class Main {
 
@@ -41,6 +36,7 @@ public class Main {
         double hieght = 2.0;
         final int N = 1000;
 
+        int distributionType = 1;
 
         // UI Adapter: START
 
@@ -50,18 +46,25 @@ public class Main {
             case 1:
                 abstractBoundariesParams = new RectangleBoundariesParams(left, bottom, width, hieght);
         }
-
-
-
-
         // UI Adapter: END
 
         Boundaries boundaries = new DefaultBoundariesGenerator().createBoundaries(abstractBoundariesParams);
-        PositionGenerator positionGenerator = new RandomRectBoundariesPositionGenerator(boundaries);
-        for(int i = 0; i < N; i++) {
 
+        AbstractAttributeGeneratorFactory positionGenerator = null;
+
+        switch (distributionType) {
+            case 1:
+                positionGenerator = new RandomAttributeGeneratorFactory(boundaries);
+            case 2:
+                positionGenerator = new FixedAttributeGeneratorFactory(boundaries);
         }
-        Coordinates2D coordinates2D = positionGenerator.generatePoint();
+
+        positionGenerator.generate2DPoint();
+
+
+
+
+
 
 
         System.out.println(boundaries.getName());

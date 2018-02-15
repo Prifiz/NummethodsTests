@@ -1,9 +1,13 @@
+import attribute.*;
+import attribute.FixedValueScalar;
+import attribute.Scalar;
 import boundaries.*;
-import random.*;
+
+import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
 //        List<Float> stepValues = Arrays.asList(
 //                0.5f, 0.2f, 0.1f, 0.05f, 0.01f, 0.005f, 0.001f, 0.0005f, 0.0001f);
@@ -27,7 +31,21 @@ public class Main {
         calculateErrors(0.1f);
     }
 
-    private static void calculateErrors(final float TAU) {
+//    private static AbstractAttributeGeneratorFactory getFactory(int distributionType, Boundaries boundaries)
+//            throws IOException {
+//        switch (distributionType) {
+//            case 1:
+//                return new RandomAttributeGeneratorFactory(boundaries);
+//            case 2:
+//                return new FixedAttributeGeneratorFactory(boundaries);
+//            case 3:
+//                return new FormulaAttributeGeneratorFactory(boundaries);
+//            default:
+//                throw new IOException("No such attribute option!");
+//        }
+//    }
+
+    private static void calculateErrors(final float TAU) throws IOException {
 
         int tabNumber = 1;
         double left = -1.0f;
@@ -36,7 +54,7 @@ public class Main {
         double hieght = 2.0;
         final int N = 1000;
 
-        int distributionType = 1;
+        //int distributionType = 1;
 
         // UI Adapter: START
 
@@ -50,16 +68,40 @@ public class Main {
 
         Boundaries boundaries = new DefaultBoundariesGenerator().createBoundaries(abstractBoundariesParams);
 
-        AbstractAttributeGeneratorFactory positionGenerator = null;
+//        try {
+//            //AbstractAttributeGeneratorFactory attributeGeneratorFactory = getFactory(distributionType, boundaries);
+//
+//        } catch (IOException ex) {
+//        }
 
-        switch (distributionType) {
-            case 1:
-                positionGenerator = new RandomAttributeGeneratorFactory(boundaries);
-            case 2:
-                positionGenerator = new FixedAttributeGeneratorFactory(boundaries);
+        Scalar fixedMassAttr = new FixedValueScalar(1.0f);
+        System.out.println("Fixed mass: " + fixedMassAttr.getValue());
+        double massMin = 1.0f;
+        double massMax = 2.0f;
+        Scalar randomMassAttr = new RandomValueScalar(massMin, massMax);
+        System.out.printf("Random mass (%s : %s): " + randomMassAttr.getValue(), massMin, massMax);
+        System.out.println();
+        Scalar x = new FixedValueScalar(1.0f);
+        Scalar y = new FixedValueScalar(5.0f);
+        Vector fixedCoord = new FixedValueVector(2, new Scalar[]{x, y});
+        for(Scalar coord : fixedCoord.getValue()) {
+            System.out.println(coord.getValue());
         }
 
-        positionGenerator.generate2DPoint();
+//        double m;
+//        double x;
+//        double y;
+//        double z;
+//        double vx;
+//        double vy;
+//        double vz;
+//        double Ix;
+//        double Iy;
+//        double Iz;
+//        double limitF;
+
+
+        //attributeGeneratorFactory.generate2DPoint();
 
 
 
@@ -67,7 +109,7 @@ public class Main {
 
 
 
-        System.out.println(boundaries.getName());
+        //System.out.println(boundaries.getName());
 
 //        System.out.println("TAU = " + TAU);
 //        final int STEPS = 10000;

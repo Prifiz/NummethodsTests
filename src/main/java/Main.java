@@ -3,6 +3,7 @@ import attribute.FixedValueScalar;
 import attribute.Scalar;
 import boundaries.*;
 import particles.Particle;
+import random.RandomUniformIntervalGenerator;
 
 import java.io.IOException;
 
@@ -53,7 +54,7 @@ public class Main {
         double bottom = -1.0f;
         double width = 2.0;
         double hieght = 2.0;
-        final int N = 1000;
+        final int N = 10;
 
         //int distributionType = 1;
 
@@ -79,8 +80,8 @@ public class Main {
         System.out.println("Fixed mass: " + fixedMassAttr.getValue());
         double massMin = 1.0f;
         double massMax = 2.0f;
-        Scalar randomMassAttr = new RandomValueScalar(massMin, massMax);
-        System.out.printf("Random mass (%s : %s): " + randomMassAttr.getValue(), massMin, massMax);
+        //Scalar randomMassAttr = new RandomValueScalar(massMin, massMax);
+        //System.out.printf("Random mass (%s : %s): " + randomMassAttr.getValue(), massMin, massMax);
         System.out.println();
         Scalar x = new FixedValueScalar(1.0f);
         Scalar y = new FixedValueScalar(5.0f);
@@ -90,15 +91,17 @@ public class Main {
 //        }
 
 
-
+        ScalarGenerator scalarGenerator = new RandomValueScalarGenerator();
 
         for (int i = 0; i < N; i++) {
             Vector coordinates = null;
             Particle particle2D = new Particle(coordinates);
-            FixedValueScalarGenerator fixedValueScalarGenerator = new ScalarGeneratorImpl();
-            particle2D.setMass(fixedValueScalarGenerator.generateFixedValueScalar(1.0f));
-
+            scalarGenerator.setRandomGenerator(new RandomUniformIntervalGenerator(1.0f, 2.0f));
+            particle2D.setMass(scalarGenerator.generateScalar());
+            System.out.println(particle2D.getMass().getValue());
         }
+
+
 
 //        double m;
 //        double x;

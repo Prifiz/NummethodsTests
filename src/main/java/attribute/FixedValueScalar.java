@@ -6,7 +6,7 @@ package attribute;
 public class FixedValueScalar extends Scalar {
 
     public FixedValueScalar(double value) {
-        this.value = value;
+        super(value);
     }
 
     @Override

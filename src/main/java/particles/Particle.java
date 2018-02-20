@@ -12,6 +12,10 @@ public class Particle {
         this.mass = mass;
     }
 
+    public Scalar getMass() {
+        return mass;
+    }
+
     private Scalar mass;
     private Vector coordinates;
     private Vector velocities;

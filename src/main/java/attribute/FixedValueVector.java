@@ -12,12 +12,12 @@ public class FixedValueVector extends Vector {
         this.scalars = scalars;
     }
 
-    @Override
-    public Scalar[] getValue() throws IOException {
-        if(scalars.length == size) {
-            return scalars;
-        } else {
-            throw new IOException("Incompatible vector size");
-        }
-    }
+//    @Override
+//    public Scalar[] getValue() throws IOException {
+//        if(scalars.length == size) {
+//            return scalars;
+//        } else {
+//            throw new IOException("Incompatible vector size");
+//        }
+//    }
 }

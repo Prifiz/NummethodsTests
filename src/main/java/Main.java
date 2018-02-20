@@ -2,6 +2,7 @@ import attribute.*;
 import attribute.FixedValueScalar;
 import attribute.Scalar;
 import boundaries.*;
+import particles.Particle;
 
 import java.io.IOException;
 
@@ -84,8 +85,19 @@ public class Main {
         Scalar x = new FixedValueScalar(1.0f);
         Scalar y = new FixedValueScalar(5.0f);
         Vector fixedCoord = new FixedValueVector(2, new Scalar[]{x, y});
-        for(Scalar coord : fixedCoord.getValue()) {
-            System.out.println(coord.getValue());
+//        for(Scalar coord : fixedCoord.getValue()) {
+//            System.out.println(coord.getValue());
+//        }
+
+
+
+
+        for (int i = 0; i < N; i++) {
+            Vector coordinates = null;
+            Particle particle2D = new Particle(coordinates);
+            FixedValueScalarGenerator fixedValueScalarGenerator = new ScalarGeneratorImpl();
+            particle2D.setMass(fixedValueScalarGenerator.generateFixedValueScalar(1.0f));
+
         }
 
 //        double m;

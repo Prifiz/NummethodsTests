@@ -76,28 +76,18 @@ public class Main {
 //        } catch (IOException ex) {
 //        }
 
-        Scalar fixedMassAttr = new FixedValueScalar(1.0f);
-        System.out.println("Fixed mass: " + fixedMassAttr.getValue());
         double massMin = 1.0f;
         double massMax = 2.0f;
-        //Scalar randomMassAttr = new RandomValueScalar(massMin, massMax);
-        //System.out.printf("Random mass (%s : %s): " + randomMassAttr.getValue(), massMin, massMax);
-        System.out.println();
-        Scalar x = new FixedValueScalar(1.0f);
-        Scalar y = new FixedValueScalar(5.0f);
-        Vector fixedCoord = new FixedValueVector(2, new Scalar[]{x, y});
-//        for(Scalar coord : fixedCoord.getValue()) {
-//            System.out.println(coord.getValue());
-//        }
 
+        ScalarGenerator massGenerator = new RandomValueScalarGenerator(
+                new RandomUniformIntervalGenerator(massMin, massMax));
 
-        ScalarGenerator scalarGenerator = new RandomValueScalarGenerator();
+        ScalarGenerator fixedScalarGenerator = new FixedValueScalarGenerator(1.0f);
 
         for (int i = 0; i < N; i++) {
             Vector coordinates = null;
             Particle particle2D = new Particle(coordinates);
-            scalarGenerator.setRandomGenerator(new RandomUniformIntervalGenerator(1.0f, 2.0f));
-            particle2D.setMass(scalarGenerator.generateScalar());
+            particle2D.setMass(massGenerator.generateScalar());
             System.out.println(particle2D.getMass().getValue());
         }
 

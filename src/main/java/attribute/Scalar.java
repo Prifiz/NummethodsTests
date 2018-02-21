@@ -5,11 +5,11 @@ package attribute;
  */
 public abstract class Scalar {
 
+    protected double value;
+
     public Scalar(double value) {
         this.value = value;
     }
-
-    protected double value;
 
     public double getValue() {
         return value;

@@ -47,6 +47,8 @@ public class Main {
 //        }
 //    }
 
+    //private static int getDimension() {}
+
     private static void calculateErrors(final float TAU) throws IOException {
 
         int tabNumber = 1;
@@ -70,12 +72,6 @@ public class Main {
 
         Boundaries boundaries = new DefaultBoundariesGenerator().createBoundaries(abstractBoundariesParams);
 
-//        try {
-//            //AbstractAttributeGeneratorFactory attributeGeneratorFactory = getFactory(distributionType, boundaries);
-//
-//        } catch (IOException ex) {
-//        }
-
         double massMin = 1.0f;
         double massMax = 2.0f;
 
@@ -88,11 +84,15 @@ public class Main {
         VectorGenerator fixedVectorGenerator = new FixedValueVectorGenerator(1.0f, 2.0f, 3.0f);
         Vector fixedVector = fixedVectorGenerator.generateVector();
 
+
+
+
+
         for (int i = 0; i < N; i++) {
             Vector coordinates = null;
-            Particle particle2D = new Particle(coordinates);
-            particle2D.setMass(massGenerator.generateScalar());
-            System.out.println(particle2D.getMass().getValue());
+            Particle particle = new Particle(coordinates);
+            particle.setMass(massGenerator.generateScalar());
+            System.out.println(particle.getMass().getValue());
         }
 
         // CHANGE generated attribute!!!

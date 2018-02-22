@@ -1,7 +1,6 @@
 package particles;
 
 import attribute.*;
-import attribute.generators.VectorGenerationException;
 
 /**
  * Created by PrifizGamer on 16.02.2018.
@@ -16,35 +15,36 @@ public class Particle {
         return mass;
     }
 
+    private final int dimensions;
     private Scalar mass;
     private Vector coordinates;
     private Vector velocities;
     private Vector impmomemts;
     private Scalar forceLimit;
 
-    private static final int DIMENSIONS = 2;
-
-    public Particle() throws VectorGenerationException {
-        this.coordinates = new ZeroValueVector(DIMENSIONS);
+    public Particle(int dimensions) {
+        this.dimensions = dimensions;
+        this.coordinates = new ZeroValueVector(dimensions);
         this.mass = new ZeroValueScalar();
         this.forceLimit = new ZeroValueScalar();
-        this.velocities = new ZeroValueVector(DIMENSIONS);
+        this.velocities = new ZeroValueVector(dimensions);
 
     }
 
-    public Particle(Vector coordinates) throws VectorGenerationException {
+    public Particle(Vector coordinates) {
+        this.dimensions = coordinates.getSize();
         this.coordinates = coordinates;
         this.mass = new ZeroValueScalar();
         this.forceLimit = new ZeroValueScalar();
-        this.velocities = new ZeroValueVector(DIMENSIONS);
+        this.velocities = new ZeroValueVector(dimensions);
     }
 
-    private Vector ensureVector(Vector vector) throws VectorGenerationException {
-        if(DIMENSIONS == vector.getSize()) {
+    private Vector ensureVector(Vector vector) {
+        if(dimensions == vector.getSize()) {
             return vector;
         } else {
-            System.out.printf("Incorrect input vector size. Making zero vector of needed size %s instead\n", DIMENSIONS);
-            return new ZeroValueVector(DIMENSIONS);
+            System.out.printf("Incorrect input vector size. Making zero vector of needed size %s instead\n", dimensions);
+            return new ZeroValueVector(dimensions);
         }
     }
 

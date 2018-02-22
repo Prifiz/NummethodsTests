@@ -10,6 +10,6 @@ public class FixedValueScalarGenerator implements ScalarGenerator {
 
     @Override
     public Scalar generateScalar() {
-        return new FixedValueScalar(fixedValue);
+        return new ScalarImpl(fixedValue);
     }
 }

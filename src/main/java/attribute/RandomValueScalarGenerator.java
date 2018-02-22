@@ -4,15 +4,11 @@ import random.RandomGenerator;
 
 public class RandomValueScalarGenerator implements ScalarGenerator {
 
+    private RandomGenerator randomGenerator;
+
     public RandomValueScalarGenerator(RandomGenerator randomGenerator) {
         this.randomGenerator = randomGenerator;
     }
-
-    public void setRandomGenerator(RandomGenerator randomGenerator) {
-        this.randomGenerator = randomGenerator;
-    }
-
-    private RandomGenerator randomGenerator;
 
     @Override
     public Scalar generateScalar() {

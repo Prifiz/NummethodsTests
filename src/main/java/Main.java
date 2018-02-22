@@ -1,5 +1,4 @@
 import attribute.*;
-import attribute.FixedValueScalar;
 import attribute.Scalar;
 import boundaries.*;
 import particles.Particle;
@@ -84,6 +83,9 @@ public class Main {
 
         ScalarGenerator fixedScalarGenerator = new FixedValueScalarGenerator(1.0f);
 
+        VectorGenerator fixedVectorGenerator = new FixedValueVectorGenerator(1.0f, 2.0f, 3.0f);
+        Vector fixedVector = fixedVectorGenerator.generateVector();
+
         for (int i = 0; i < N; i++) {
             Vector coordinates = null;
             Particle particle2D = new Particle(coordinates);
@@ -91,6 +93,7 @@ public class Main {
             System.out.println(particle2D.getMass().getValue());
         }
 
+        // CHANGE generated attribute!!!
 
 
 //        double m;

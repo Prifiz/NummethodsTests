@@ -24,27 +24,27 @@ public class Particle {
 
     private static final int DIMENSIONS = 2;
 
-    public Particle() {
-        this.coordinates = new ZeroVector(DIMENSIONS);
-        this.mass = new ZeroScalar();
-        this.forceLimit = new ZeroScalar();
-        this.velocities = new ZeroVector(DIMENSIONS);
+    public Particle() throws VectorGenerationException {
+        this.coordinates = new ZeroVectorGenerator(DIMENSIONS).generateVector();
+        this.mass = new ZeroScalarGenerator().generateScalar();
+        this.forceLimit = new ZeroScalarGenerator().generateScalar();
+        this.velocities = new ZeroVectorGenerator(DIMENSIONS).generateVector();
 
     }
 
-    public Particle(@NotNull Vector coordinates) {
+    public Particle(@NotNull Vector coordinates) throws VectorGenerationException {
         this.coordinates = coordinates;
-        this.mass = new ZeroScalar();
-        this.forceLimit = new ZeroScalar();
-        this.velocities = new ZeroVector(DIMENSIONS);
+        this.mass = new ZeroScalarGenerator().generateScalar();
+        this.forceLimit = new ZeroScalarGenerator().generateScalar();
+        this.velocities = new ZeroVectorGenerator(DIMENSIONS).generateVector();
     }
 
-    private Vector ensureVector(Vector vector) {
+    private Vector ensureVector(Vector vector) throws VectorGenerationException {
         if(DIMENSIONS == vector.getSize()) {
             return vector;
         } else {
             System.out.printf("Incorrect input vector size. Making zero vector of needed size %s instead\n", DIMENSIONS);
-            return new ZeroVector(DIMENSIONS);
+            return new ZeroVectorGenerator(DIMENSIONS).generateVector();
         }
     }
 

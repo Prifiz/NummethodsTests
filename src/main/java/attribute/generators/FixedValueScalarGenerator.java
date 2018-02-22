@@ -1,4 +1,7 @@
-package attribute;
+package attribute.generators;
+
+import attribute.Scalar;
+import attribute.ScalarImpl;
 
 public class FixedValueScalarGenerator implements ScalarGenerator {
 

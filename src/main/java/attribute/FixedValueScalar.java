@@ -5,9 +5,7 @@ package attribute;
  */
 public class FixedValueScalar extends Scalar {
 
-    public FixedValueScalar(double value) {
-        super(value);
-    }
+
 
     @Override
     public double getValue() {

@@ -6,6 +6,6 @@ package attribute;
 public class ScalarImpl extends Scalar {
 
     public ScalarImpl(double value) {
-        super(value);
+        this.value = value;
     }
 }

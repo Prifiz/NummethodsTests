@@ -1,5 +1,6 @@
 import attribute.*;
 import attribute.Scalar;
+import attribute.generators.*;
 import boundaries.*;
 import particles.Particle;
 import random.RandomUniformIntervalGenerator;
@@ -82,8 +83,7 @@ public class Main {
                 new RandomUniformIntervalGenerator(massMin, massMax));
 
         ScalarGenerator fixedScalarGenerator = new FixedValueScalarGenerator(1.0f);
-        ScalarGenerator zeroGenerator = new ZeroScalarGenerator();
-        Scalar zeroScalar = zeroGenerator.generateScalar();
+        Scalar zeroScalar = new ZeroValueScalar();
 
         VectorGenerator fixedVectorGenerator = new FixedValueVectorGenerator(1.0f, 2.0f, 3.0f);
         Vector fixedVector = fixedVectorGenerator.generateVector();

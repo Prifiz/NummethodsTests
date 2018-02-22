@@ -7,9 +7,9 @@ public abstract class Scalar {
 
     protected double value;
 
-    public Scalar(double value) {
-        this.value = value;
-    }
+//    public Scalar(double value) {
+//        this.value = value;
+//    }
 
     public double getValue() {
         return value;

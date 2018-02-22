@@ -1,7 +1,7 @@
 package particles;
 
 import attribute.*;
-import com.sun.istack.internal.NotNull;
+import attribute.generators.VectorGenerationException;
 
 /**
  * Created by PrifizGamer on 16.02.2018.
@@ -25,18 +25,18 @@ public class Particle {
     private static final int DIMENSIONS = 2;
 
     public Particle() throws VectorGenerationException {
-        this.coordinates = new ZeroVectorGenerator(DIMENSIONS).generateVector();
-        this.mass = new ZeroScalarGenerator().generateScalar();
-        this.forceLimit = new ZeroScalarGenerator().generateScalar();
-        this.velocities = new ZeroVectorGenerator(DIMENSIONS).generateVector();
+        this.coordinates = new ZeroValueVector(DIMENSIONS);
+        this.mass = new ZeroValueScalar();
+        this.forceLimit = new ZeroValueScalar();
+        this.velocities = new ZeroValueVector(DIMENSIONS);
 
     }
 
-    public Particle(@NotNull Vector coordinates) throws VectorGenerationException {
+    public Particle(Vector coordinates) throws VectorGenerationException {
         this.coordinates = coordinates;
-        this.mass = new ZeroScalarGenerator().generateScalar();
-        this.forceLimit = new ZeroScalarGenerator().generateScalar();
-        this.velocities = new ZeroVectorGenerator(DIMENSIONS).generateVector();
+        this.mass = new ZeroValueScalar();
+        this.forceLimit = new ZeroValueScalar();
+        this.velocities = new ZeroValueVector(DIMENSIONS);
     }
 
     private Vector ensureVector(Vector vector) throws VectorGenerationException {
@@ -44,7 +44,7 @@ public class Particle {
             return vector;
         } else {
             System.out.printf("Incorrect input vector size. Making zero vector of needed size %s instead\n", DIMENSIONS);
-            return new ZeroVectorGenerator(DIMENSIONS).generateVector();
+            return new ZeroValueVector(DIMENSIONS);
         }
     }
 

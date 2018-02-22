@@ -1,5 +1,7 @@
-package attribute;
+package attribute.generators;
 
+import attribute.Scalar;
+import attribute.ScalarImpl;
 import random.RandomGenerator;
 
 public class RandomValueScalarGenerator implements ScalarGenerator {

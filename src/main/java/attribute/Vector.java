@@ -1,7 +1,5 @@
 package attribute;
 
-import java.io.IOException;
-
 /**
  * Created by PrifizGamer on 16.02.2018.
  */
@@ -22,6 +20,4 @@ public abstract class Vector {
         this.size = size;
         this.scalars = new Scalar[size];
     }
-
-    //public abstract Scalar[] getValue() throws IOException;
 }

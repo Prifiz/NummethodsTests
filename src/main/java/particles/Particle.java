@@ -2,6 +2,8 @@ package particles;
 
 import attribute.*;
 
+import java.io.IOException;
+
 /**
  * Created by PrifizGamer on 16.02.2018.
  */
@@ -32,8 +34,14 @@ public class Particle {
     }
 
     public Particle(Vector coordinates) {
-        this.dimensions = coordinates.getSize();
-        this.coordinates = coordinates;
+        if(coordinates == null) {
+            System.out.println("Coordinates not set. Setting 3D zero vector by default");
+            this.dimensions = 3;
+            this.coordinates = new ZeroValueVector(dimensions);
+        } else {
+            this.dimensions = coordinates.getSize();
+            this.coordinates = coordinates;
+        }
         this.mass = new ZeroValueScalar();
         this.forceLimit = new ZeroValueScalar();
         this.velocities = new ZeroValueVector(dimensions);

@@ -17,14 +17,14 @@ public class Main {
 //            calculateErrors(tau);
 //        }
 
-//        MethodRunner rungeRunner = new MethodRunnerImpl(new RK4());
+//        methods.MethodRunner rungeRunner = new methods.MethodRunnerImpl(new RK4());
 //        rungeRunner.run(10000, 0.001f);
 //        calculateErrors(0.001f);
 //        System.out.println(Math.ulp(1.000002878290556E-10));
 
 
 //        Method method = new Euler();
-//        MethodRunner runner = new MethodRunnerImpl(method);
+//        methods.MethodRunner runner = new methods.MethodRunnerImpl(method);
 //        runner.run(1000, 0.001f);// use decorator for options
 //
 //        InitialStateGenerator initialStateGenerator = new RandomRectInitialStateGenerator();

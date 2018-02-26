@@ -2,10 +2,16 @@ import attribute.*;
 import attribute.Scalar;
 import attribute.generators.*;
 import boundaries.*;
+import coordinates.BoundedRandomCoordinatesGenerator;
+import coordinates.CoordinatesGenerator;
+import coordinates.FixedCoordinatesGenerator;
 import particles.Particle;
+import random.RandomGenerator;
 import random.RandomUniformIntervalGenerator;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
 
@@ -84,16 +90,23 @@ public class Main {
         VectorGenerator fixedVectorGenerator = new FixedValueVectorGenerator(1.0f, 2.0f, 3.0f);
         Vector fixedVector = fixedVectorGenerator.generateVector();
 
+        Map<Integer, RandomGenerator> randomGeneratorsForComponents = new HashMap<>();
+        randomGeneratorsForComponents.put(0, new RandomUniformIntervalGenerator(0.0f, 1.0f));
+        randomGeneratorsForComponents.put(1, new RandomUniformIntervalGenerator(-1.0f, 0.0f));
+        VectorGenerator randomVectorGenerator = new RandomValueVectorGenerator(2, randomGeneratorsForComponents);
+        Vector randomVector = randomVectorGenerator.generateVector();
+        System.out.println(randomVector.toString());
 
+        CoordinatesGenerator boundedCoordinatesGenerator = new BoundedRandomCoordinatesGenerator(boundaries, 2);
+        Vector bounded = boundedCoordinatesGenerator.generate();
+        System.out.println(bounded.toString());
 
-
-
-        for (int i = 0; i < N; i++) {
-            Vector coordinates = null;
-            Particle particle = new Particle(coordinates);
-            particle.setMass(massGenerator.generateScalar());
-            System.out.println(particle.getMass().getValue());
-        }
+//        for (int i = 0; i < N; i++) {
+//            Vector coordinates = null;
+//            Particle particle = new Particle(coordinates);
+//            particle.setMass(massGenerator.generateScalar());
+//            System.out.println(particle.getMass().getValue());
+//        }
 
         // CHANGE generated attribute!!!
 

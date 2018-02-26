@@ -20,4 +20,13 @@ public abstract class Vector {
         this.size = size;
         this.scalars = new Scalar[size];
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder(size);
+        for(Scalar scalar : scalars) {
+            stringBuilder.append(scalar.getValue() + "\n");
+        }
+        return stringBuilder.toString();
+    }
 }

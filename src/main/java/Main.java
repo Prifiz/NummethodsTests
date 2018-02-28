@@ -1,5 +1,6 @@
 import attribute.*;
 import attribute.Scalar;
+import attribute.Vector;
 import attribute.generators.*;
 import boundaries.*;
 import coordinates.BoundedRandomCoordinatesGenerator;
@@ -11,8 +12,7 @@ import random.RandomGenerator;
 import random.RandomUniformIntervalGenerator;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
 
@@ -109,10 +109,22 @@ public class Main {
 
         CoordinatesGenerator testGenerator = new TestCoordinatesGenerator(rectBoundary);
 
-        for (int i = 0; i < 1000; i++) {
+        List<Particle> particles = new ArrayList<>();
+
+        long startTime = System.nanoTime();
+
+
+        for (int i = 0; i < 1000000; i++) {
             Vector testVector = testGenerator.generate();
-            System.out.println(testVector.toString());
+            Particle particle = new Particle(testVector);
+            particles.add(particle);
+            //System.out.println(testVector.toString());
+            //System.out.println(particle.toString());
         }
+
+        long endTime   = System.nanoTime();
+        long totalTime = endTime - startTime;
+        System.out.println(totalTime);
 
 
 //        for (int i = 0; i < N; i++) {

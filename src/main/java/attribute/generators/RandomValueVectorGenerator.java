@@ -17,6 +17,11 @@ public class RandomValueVectorGenerator implements VectorGenerator {
         this.randomGeneratorsForComponents = randomGeneratorsForComponents;
     }
 
+    public RandomValueVectorGenerator(Map<Integer, RandomGenerator> randomGeneratorsForComponents) {
+        this.vectorSize = randomGeneratorsForComponents.size();
+        this.randomGeneratorsForComponents = randomGeneratorsForComponents;
+    }
+
     @Override
     public Vector generateVector() throws VectorGenerationException {
         Scalar[] scalars = new Scalar[vectorSize];

@@ -6,6 +6,10 @@ package boundaries;
 public class DefaultBoundariesGenerator implements BoundariesGenerator {
 
     public Boundaries createBoundaries(AbstractBoundariesParams abstractBoundariesParams) {
+
+
+
+
         switch (abstractBoundariesParams.getName()) {
             case BoundariesNames.RECTANGLE_BOUNDARY: {
                 return new RectangleBoundaries((RectangleBoundariesParams) abstractBoundariesParams);

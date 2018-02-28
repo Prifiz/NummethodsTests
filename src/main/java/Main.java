@@ -5,6 +5,7 @@ import boundaries.*;
 import coordinates.BoundedRandomCoordinatesGenerator;
 import coordinates.CoordinatesGenerator;
 import coordinates.FixedCoordinatesGenerator;
+import coordinates.TestCoordinatesGenerator;
 import particles.Particle;
 import random.RandomGenerator;
 import random.RandomUniformIntervalGenerator;
@@ -95,11 +96,24 @@ public class Main {
         randomGeneratorsForComponents.put(1, new RandomUniformIntervalGenerator(-1.0f, 0.0f));
         VectorGenerator randomVectorGenerator = new RandomValueVectorGenerator(2, randomGeneratorsForComponents);
         Vector randomVector = randomVectorGenerator.generateVector();
-        System.out.println(randomVector.toString());
+        //System.out.println(randomVector.toString());
 
         CoordinatesGenerator boundedCoordinatesGenerator = new BoundedRandomCoordinatesGenerator(boundaries, 2);
         Vector bounded = boundedCoordinatesGenerator.generate();
-        System.out.println(bounded.toString());
+        //System.out.println(bounded.toString());
+
+        Boundary rectBoundary = new Boundary()
+                .addRange(0, new Range(-3.0f, -2.0f))
+                .addRange(1, new Range(2.0f, 3.0f))
+                .addRange(2, new Range(10.0f, 20.0f));
+
+        CoordinatesGenerator testGenerator = new TestCoordinatesGenerator(rectBoundary);
+
+        for (int i = 0; i < 1000; i++) {
+            Vector testVector = testGenerator.generate();
+            System.out.println(testVector.toString());
+        }
+
 
 //        for (int i = 0; i < N; i++) {
 //            Vector coordinates = null;

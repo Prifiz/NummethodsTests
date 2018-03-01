@@ -21,11 +21,11 @@ public class TestCoordinatesGenerator implements CoordinatesGenerator {
 
     @Override
     public Vector generate() throws VectorGenerationException {
-        Map<Integer, RandomGenerator> randomGeneratorMap = new LinkedHashMap<>();
+        Map<String, RandomGenerator> randomGeneratorMap = new LinkedHashMap<>();
         for (int i = 0; i < this.boundary.getSize(); i++) {
             Range range = boundary.getRange(i);
             RandomGenerator randomGenerator = new RandomUniformIntervalGenerator(range.getMin(), range.getMax());
-            randomGeneratorMap.put(i, randomGenerator);
+            randomGeneratorMap.put(range.getName(), randomGenerator);
         }
         return new RandomValueVectorGenerator(randomGeneratorMap).generateVector();
     }

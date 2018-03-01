@@ -3,10 +3,7 @@ import attribute.Scalar;
 import attribute.Vector;
 import attribute.generators.*;
 import boundaries.*;
-import coordinates.BoundedRandomCoordinatesGenerator;
-import coordinates.CoordinatesGenerator;
-import coordinates.FixedCoordinatesGenerator;
-import coordinates.TestCoordinatesGenerator;
+import coordinates.*;
 import particles.Particle;
 import random.RandomGenerator;
 import random.RandomUniformIntervalGenerator;
@@ -89,25 +86,34 @@ public class Main {
         Scalar zeroScalar = new ZeroValueScalar();
 
         VectorGenerator fixedVectorGenerator = new FixedValueVectorGenerator(1.0f, 2.0f, 3.0f);
+        Vector namedFixedVector = new FixedValueVectorGenerator(
+                new VectorComponent(1.0f, "x"),
+                new VectorComponent(2.0f, "y"),
+                new VectorComponent(3.0f, "z"))
+                .generateVector();
+
         Vector fixedVector = fixedVectorGenerator.generateVector();
 
-        Map<Integer, RandomGenerator> randomGeneratorsForComponents = new HashMap<>();
-        randomGeneratorsForComponents.put(0, new RandomUniformIntervalGenerator(0.0f, 1.0f));
-        randomGeneratorsForComponents.put(1, new RandomUniformIntervalGenerator(-1.0f, 0.0f));
-        VectorGenerator randomVectorGenerator = new RandomValueVectorGenerator(2, randomGeneratorsForComponents);
+        Map<String, RandomGenerator> randomGeneratorsForComponents = new HashMap<>();
+        randomGeneratorsForComponents.put("x", new RandomUniformIntervalGenerator(0.0f, 1.0f));
+        randomGeneratorsForComponents.put("y", new RandomUniformIntervalGenerator(-1.0f, 0.0f));
+        VectorGenerator randomVectorGenerator = new RandomValueVectorGenerator(randomGeneratorsForComponents);
         Vector randomVector = randomVectorGenerator.generateVector();
         //System.out.println(randomVector.toString());
 
-        CoordinatesGenerator boundedCoordinatesGenerator = new BoundedRandomCoordinatesGenerator(boundaries, 2);
-        Vector bounded = boundedCoordinatesGenerator.generate();
-        //System.out.println(bounded.toString());
-
         Boundary rectBoundary = new Boundary()
-                .addRange(0, new Range(-3.0f, -2.0f))
-                .addRange(1, new Range(2.0f, 3.0f))
-                .addRange(2, new Range(10.0f, 20.0f));
+                .addRange(0, new Range(-3.0f, -2.0f).addName("X"))
+                .addRange(1, new Range(2.0f, 3.0f).addName("Y"))
+                .addRange(2, new Range(10.0f, 20.0f).addName("Z"));
+
+        Boundary ringBoundary = new Boundary()
+                .addRange(new Range(0.0f, 2 * Math.PI).addName("Angle"))
+                .addRange(new Range(1.0f, 2.0f).addName("Radius"));
 
         CoordinatesGenerator testGenerator = new TestCoordinatesGenerator(rectBoundary);
+
+        CoordinatesGenerator ringGenerator = new RingCoordinatesGenerator(ringBoundary);
+        //Vector ringCoordinates = ringGenerator.generate();
 
         List<Particle> particles = new ArrayList<>();
 
@@ -115,7 +121,7 @@ public class Main {
 
 
         for (int i = 0; i < 1000000; i++) {
-            Vector testVector = testGenerator.generate();
+            Vector testVector = ringGenerator.generate();
             Particle particle = new Particle(testVector);
             particles.add(particle);
             //System.out.println(testVector.toString());

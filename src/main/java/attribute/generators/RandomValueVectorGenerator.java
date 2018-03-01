@@ -1,38 +1,40 @@
 package attribute.generators;
 
-import attribute.Scalar;
 import attribute.Vector;
+import attribute.VectorComponent;
 import attribute.VectorImpl;
 import random.RandomGenerator;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class RandomValueVectorGenerator implements VectorGenerator {
 
-    private Map<Integer, RandomGenerator> randomGeneratorsForComponents;
+    private Map<String, RandomGenerator> randomGeneratorsForComponents;
     private int vectorSize;
 
-    public RandomValueVectorGenerator(int vectorSize, Map<Integer, RandomGenerator> randomGeneratorsForComponents) {
+    public RandomValueVectorGenerator(int vectorSize, Map<String, RandomGenerator> randomGeneratorsForComponents) {
         this.vectorSize = vectorSize;
         this.randomGeneratorsForComponents = randomGeneratorsForComponents;
     }
 
-    public RandomValueVectorGenerator(Map<Integer, RandomGenerator> randomGeneratorsForComponents) {
+    public RandomValueVectorGenerator(Map<String, RandomGenerator> randomGeneratorsForComponents) {
         this.vectorSize = randomGeneratorsForComponents.size();
         this.randomGeneratorsForComponents = randomGeneratorsForComponents;
     }
 
     @Override
     public Vector generateVector() throws VectorGenerationException {
-        Scalar[] scalars = new Scalar[vectorSize];
-        for (int i = 0; i < vectorSize; i++) {
-            RandomGenerator randomGenerator = randomGeneratorsForComponents.get(i);
+        List<VectorComponent> vectorComponents = new ArrayList<>(vectorSize);
+        for(Map.Entry<String, RandomGenerator> entry : randomGeneratorsForComponents.entrySet()) {
+            RandomGenerator randomGenerator = entry.getValue();
             if(randomGenerator == null) {
                 throw new VectorGenerationException();
             }
             ScalarGenerator componentGenerator = new RandomValueScalarGenerator(randomGenerator);
-            scalars[i] = componentGenerator.generateScalar();
+            vectorComponents.add(new VectorComponent(componentGenerator.generateScalar(), entry.getKey()));
         }
-        return new VectorImpl(scalars);
+        return new VectorImpl(vectorComponents);
     }
 }

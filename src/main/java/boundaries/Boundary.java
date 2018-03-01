@@ -16,6 +16,7 @@ public class Boundary {
 
     public Boundary addRange(Integer componentNumber, Range range) {
         // if exists??
+        // fixme
         this.rangesByCoordinates.put(componentNumber, range);
         return this;
     }
@@ -26,7 +27,7 @@ public class Boundary {
     }
 
 
-    // implement Iterable!!!
+    // todo implement Iterable!!!
 
     public int getSize() {
         return rangesByCoordinates.size();

@@ -23,10 +23,15 @@ public class RingCoordinatesGenerator implements CoordinatesGenerator {
 
     @Override
     public Vector generate() throws IOException {
+
+        // fixme only random???
+
         Map<String, RandomGenerator> randomGeneratorMap = new LinkedHashMap<>();
 
         for(Range range : boundary.getSimpleRanges()) {
-            randomGeneratorMap.put(range.getName(), new RandomUniformIntervalGenerator(range.getMin(), range.getMax()));
+            randomGeneratorMap.put(
+                    range.getName(),
+                    new RandomUniformIntervalGenerator(range.getMin(), range.getMax()));
         }
 
         Vector source = new RandomValueVectorGenerator(randomGeneratorMap).generateVector();

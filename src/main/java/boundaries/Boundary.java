@@ -40,13 +40,4 @@ public class Boundary {
     public List<Range> getSimpleRanges() {
         return simpleRanges;
     }
-
-    public Range getRangeByName(String name) {
-        for(Range range : simpleRanges) {
-            if(name.equalsIgnoreCase(range.getName())) {
-                return range;
-            }
-        }
-        return null;
-    }
 }

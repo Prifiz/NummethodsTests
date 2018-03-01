@@ -107,8 +107,8 @@ public class Main {
                 .addRange(2, new Range(10.0f, 20.0f).addName("Z"));
 
         Boundary ringBoundary = new Boundary()
-                .addRange(new Range(0.0f, 2 * Math.PI).addName("Angle"))
-                .addRange(new Range(1.0f, 2.0f).addName("Radius"));
+                .addRange(new Range(0.0f, 2 * Math.PI).addName("angle"))
+                .addRange(new Range(1.0f, 2.0f).addName("radius"));
 
         CoordinatesGenerator testGenerator = new TestCoordinatesGenerator(rectBoundary);
 
@@ -118,7 +118,6 @@ public class Main {
         List<Particle> particles = new ArrayList<>();
 
         long startTime = System.nanoTime();
-
 
         for (int i = 0; i < 1000000; i++) {
             Vector testVector = ringGenerator.generate();

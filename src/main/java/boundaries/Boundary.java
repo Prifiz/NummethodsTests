@@ -40,4 +40,5 @@ public class Boundary {
     public List<Range> getSimpleRanges() {
         return simpleRanges;
     }
+
 }

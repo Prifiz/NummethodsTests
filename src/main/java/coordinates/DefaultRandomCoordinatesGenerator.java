@@ -12,18 +12,16 @@ import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class RingCoordinatesGenerator implements CoordinatesGenerator {
+public class DefaultRandomCoordinatesGenerator implements CoordinatesGenerator {
 
     private Boundary boundary;
 
-    public RingCoordinatesGenerator(Boundary boundary) {
+    public DefaultRandomCoordinatesGenerator(Boundary boundary) {
         this.boundary = boundary;
     }
 
     @Override
     public Vector generate() throws IOException {
-
-        // fixme only random???
 
         Map<String, RandomGenerator> randomGeneratorMap = new LinkedHashMap<>();
 
@@ -37,6 +35,4 @@ public class RingCoordinatesGenerator implements CoordinatesGenerator {
 
         return new PolarToCartesianConverter().convert(source);
     }
-
-    // TODO getDisplayName() analog for not to duplicate name strings everywhere!!!
 }

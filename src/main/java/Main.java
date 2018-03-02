@@ -101,6 +101,7 @@ public class Main {
         Vector randomVector = randomVectorGenerator.generateVector();
         //System.out.println(randomVector.toString());
 
+        // TODO getDisplayName() analog for not to duplicate name strings everywhere!!!
         Boundary rectBoundary = new Boundary()
                 .addRange(0, new Range(-3.0f, -2.0f).addName("X"))
                 .addRange(1, new Range(2.0f, 3.0f).addName("Y"))
@@ -110,9 +111,8 @@ public class Main {
                 .addRange(new Range(0.0f, 2 * Math.PI).addName("angle"))
                 .addRange(new Range(1.0f, 2.0f).addName("radius"));
 
-        CoordinatesGenerator testGenerator = new TestCoordinatesGenerator(rectBoundary);
 
-        CoordinatesGenerator ringGenerator = new RingCoordinatesGenerator(ringBoundary);
+        CoordinatesGenerator ringGenerator = new DefaultRandomCoordinatesGenerator(ringBoundary);
         //Vector ringCoordinates = ringGenerator.generate();
 
         List<Particle> particles = new ArrayList<>();

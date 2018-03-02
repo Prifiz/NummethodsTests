@@ -20,4 +20,12 @@ public class Range {
         this.name = name;
         return this;
     }
+
+    public boolean isInsideExclusively(double value) {
+        return value > min && value < max;
+    }
+
+    public boolean isInsideInclusively(double value) {
+        return value >= min && value <= max;
+    }
 }

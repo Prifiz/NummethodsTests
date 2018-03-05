@@ -9,6 +9,8 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+
+
     <modules>
         <module>initial-conditions</module>
         <module>initial-conditions-client</module>

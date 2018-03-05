@@ -113,6 +113,7 @@ public class Main {
 
 
         CoordinatesGenerator ringGenerator = new DefaultRandomCoordinatesGenerator(ringBoundary);
+
         //Vector ringCoordinates = ringGenerator.generate();
 
         List<Particle> particles = new ArrayList<>();

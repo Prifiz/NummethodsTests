@@ -1,6 +1,7 @@
-import attribute.*;
 import attribute.Scalar;
 import attribute.Vector;
+import attribute.VectorComponent;
+import attribute.ZeroValueScalar;
 import attribute.generators.*;
 import boundaries.*;
 import coordinates.*;

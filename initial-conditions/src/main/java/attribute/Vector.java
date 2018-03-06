@@ -1,5 +1,7 @@
 package attribute;
 
+import utils.MathUtils;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,7 +30,7 @@ public abstract class Vector {
 
     public Vector(int size) {
         this.size = size;
-        this.components = new ArrayList<VectorComponent>(size);
+        this.components = new ArrayList<>(size);
     }
 
     public VectorComponent getComponent(int componentNumber) /*throws IOException*/ {
@@ -51,7 +53,7 @@ public abstract class Vector {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder(size);
         for(VectorComponent component : components) {
-            stringBuilder.append(component.getScalar().getValue() + "\n");
+            stringBuilder.append(MathUtils.roundResult(component.getScalar().getValue(), 3) + "\n");
         }
         return stringBuilder.toString();
     }

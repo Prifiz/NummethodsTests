@@ -1,7 +1,6 @@
 package coordinates;
 
 import attribute.Vector;
-import attribute.generators.VectorGenerationException;
 
 import java.io.IOException;
 

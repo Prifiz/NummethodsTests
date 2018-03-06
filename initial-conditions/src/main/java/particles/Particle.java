@@ -2,8 +2,6 @@ package particles;
 
 import attribute.*;
 
-import java.io.IOException;
-
 /**
  * Created by PrifizGamer on 16.02.2018.
  */

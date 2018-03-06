@@ -1,7 +1,6 @@
 package coordinates;
 
 import attribute.Vector;
-import attribute.converters.PolarToCartesianConverter;
 import attribute.generators.RandomValueVectorGenerator;
 import boundaries.Boundary;
 import boundaries.Range;
@@ -33,6 +32,6 @@ public class DefaultRandomCoordinatesGenerator implements CoordinatesGenerator {
 
         Vector source = new RandomValueVectorGenerator(randomGeneratorMap).generateVector();
 
-        return new PolarToCartesianConverter().convert(source);
+        return source;
     }
 }

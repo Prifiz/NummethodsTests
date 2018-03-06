@@ -1,11 +1,11 @@
-package distributions;
-
-import attribute.Vector;
-import boundaries.Boundary;
-import boundaries.Range;
-
-import java.io.IOException;
-import java.util.Map;
+//package distributions;
+//
+//import attribute.Vector;
+//import boundaries.Boundary;
+//import boundaries.Range;
+//
+//import java.io.IOException;
+//import java.util.Map;
 
 //public class EquidistantRingCoordinatesGenerator implements CoordinatesGenerator {
 //
